@@ -1,6 +1,5 @@
 install_ap_binary_dependencies() {
-  echo "arg one is $1"
-  if [ -f $1/.oracle.ini ]; then
+  if test -f $1/.oracle.ini; then
     install_oci8
   fi
 }
