@@ -19,9 +19,9 @@ install_oci8() {
   info "Downloading and installing Oracle binaries from $s3bucket"
   curl $oracle_instant_client_tgz -s -o - | tar xzf - -C $oracle_instant_client_dir
 
-  info "Dir is now $oracle_instant_client_dir"
-
   echo "export OCI_INC_DIR=\"$oracle_instant_client_dir/sdk/include\"" >> $2/export
   echo "export OCI_LIB_DIR=\"$oracle_instant_client_dir\"" >> $2/export
   echo "export LD_LIBRARY_PATH=\"$oracle_instant_client_dir\"" >> $2/export
+
+  info "Done installing OCI8."
 }
