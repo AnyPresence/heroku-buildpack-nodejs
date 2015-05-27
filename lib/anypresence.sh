@@ -1,6 +1,8 @@
 install_ap_binary_dependencies() {
   if test -f $1/.oracle.ini; then
     install_oci8
+  else
+    echo "No trigger found."
   fi
 }
 
