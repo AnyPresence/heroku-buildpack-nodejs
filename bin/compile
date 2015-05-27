@@ -52,17 +52,17 @@ else
 fi
 install_npm
 
-####### Build the project's dependencies
-
-head "Building dependencies"
-cd $build_dir
-build_dependencies
-
 ####### Install binary dependencies
 
 head "Installing AnyPresence binary dependencies"
 cd $build_dir
 install_ap_binary_dependencies
+
+####### Build the project's dependencies
+
+head "Building dependencies"
+cd $build_dir
+build_dependencies
 
 ####### Create a Procfile if possible
 
