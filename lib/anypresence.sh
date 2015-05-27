@@ -1,6 +1,6 @@
 install_ap_binary_dependencies() {
   if test -f $1/.oracle.ini; then
-    install_oci8 $1
+    install_oci8 $1 $2
   else
     info "No trigger found."
   fi
@@ -21,7 +21,7 @@ install_oci8() {
 
   info "Dir is now $oracle_instant_client_dir"
 
-  LD_LIBRARY_PATH=$oracle_instant_client_dir:$LD_LIBRARY_PATH
-  OCI_LIB_DIR=$oracle_instant_client_dir
-  OCI_INC_DIR=$oracle_instant_client_dir/sdk/include
+  echo "export OCI_INC_DIR=\"$oracle_instant_client_dir/sdk/include\"" >> $2/export
+  echo "export OCI_LIB_DIR=\"$oracle_instant_client_dir\"" >> $2/export
+  echo "export LD_LIBRARY_PATH=\"$oracle_instant_client_dir\"" >> $2/export
 }

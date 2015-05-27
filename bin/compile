@@ -56,7 +56,7 @@ install_npm
 
 head "Installing AnyPresence binary dependencies"
 cd $build_dir
-install_ap_binary_dependencies $build_dir
+install_ap_binary_dependencies $build_dir $bp_dir
 
 ####### Build the project's dependencies
 
