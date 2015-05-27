@@ -1,6 +1,6 @@
 install_ap_binary_dependencies() {
   if test -f $1/.oracle.ini; then
-    install_oci8
+    install_oci8 $2
   else
     info "No trigger found."
   fi
@@ -11,7 +11,7 @@ install_oci8() {
 
   s3bucket="https://s3.amazonaws.com/chameleon-heroku-assets"
   oracle_instant_client_tgz="$s3bucket/instantclient_11_2_with_libaio_oci8.tar.gz"
-  oracle_instant_client_dir="$2/vendor/oracle_instantclient"
+  oracle_instant_client_dir="$1/vendor/oracle_instantclient"
 
   info "Creating directory"
   mkdir -p $oracle_instant_client_dir
