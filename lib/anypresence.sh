@@ -22,6 +22,6 @@ install_oci8() {
   echo "export OCI_INC_DIR=\"$oracle_instant_client_dir/sdk/include\"" >> $2/export
   echo "export OCI_LIB_DIR=\"$oracle_instant_client_dir\"" >> $2/export
   echo "export LD_LIBRARY_PATH=\"$oracle_instant_client_dir\"" >> $2/export
-
+  info cat $2/export
   info "Done installing OCI8."
 }
