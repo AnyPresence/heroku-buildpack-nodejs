@@ -1,26 +1,9 @@
 # Heroku Buildpack for Node.js
 
-![heroku-buildpack-featuerd](https://cloud.githubusercontent.com/assets/51578/6953435/52e1af5c-d897-11e4-8712-35fbd4d471b1.png)
+![nodesjs](https://cloud.githubusercontent.com/assets/51578/8882955/3f0c3980-3219-11e5-8666-bc9c926a7356.jpg)
+
 
 This is the official [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Node.js apps. If you fork this repository, please **update this README** to explain what your fork does and why it's special.
-
-
-## How it Works
-
-Apps are built via one of four paths:
-
-1. A regular `npm install` (first build; default scenario)
-2. Copy existing `node_modules` from cache, then `npm prune`, then `npm install` (subsequent builds)
-3. Skip dependencies (if package.json doesn't exist but server.js does)
-4. Skip cache, run `npm rebuild` before `npm install` (`node_modules` are checked into source control)
-
-You should only use #3 (omitting package.json) for quick tests or experiments.
-
-You should never use #4 - it's included for backwards-compatibility and will generate warnings.
-**Checking in `node_modules` is an antipattern.**
-For more information, see [the npm docs](https://docs.npmjs.com/misc/faq#should-i-check-my-node_modules-folder-into-git-)
-
-For technical details, check out the [heavily-commented compile script](https://github.com/heroku/heroku-buildpack-nodejs/blob/master/bin/compile).
 
 ## Documentation
 
@@ -32,19 +15,21 @@ For more information about using Node.js and buildpacks on Heroku, see these Dev
 - [Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
 - [Buildpack API](https://devcenter.heroku.com/articles/buildpack-api)
 
+## Locking to a buildpack version
 
-## Legacy Compatibility
+In production, you frequently want to lock all of your dependencies - including
+buildpacks - to a specific version. That way, you can regularly update and
+test them, upgrading with confidence.
 
-For most Node.js apps this buildpack should work just fine.
-If, however, you're unable to deploy using this new version of the buildpack, you can get your app working again by locking it to the previous version:
+First, find the version you want from [the list of buildpack versions](https://github.com/heroku/heroku-buildpack-nodejs/releases).
+Then, specify that version with `buildpacks:set`:
 
 ```
-heroku buildpack:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodejs#v63 -a my-app
-git commit -am "empty" --allow-empty
-git push heroku master
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-nodejs#v75 -a my-app
 ```
 
-Then please open a support ticket at [help.heroku.com](https://help.heroku.com/) so we can diagnose and get your app running on the default buildpack.
+If you have trouble upgrading to the latest version of the buildpack, please
+open a support ticket at [help.heroku.com](https://help.heroku.com/) so we can assist.
 
 ## Options
 
