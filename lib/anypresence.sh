@@ -21,7 +21,7 @@ install_oci8() {
 
   oci_inc="$oracle_instant_client_dir/sdk/include"
   mkdir -p $1/.profile.d
-  echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/oracle_instantclient:\$LD_LIBRARY_PATH\"" > $1/.profile.d/nodejs.sh
+  echo "export LD_LIBRARY_PATH=\"\${LD_LIBRARY_PATH:+LD_LIBRARY_PATH:}\$HOME/vendor/oracle_instantclient\"" > $1/.profile.d/nodejs.sh
   echo "export OCI_LIB_DIR=\"\$HOME/vendor/oracle_instantclient\"" >> $1/.profile.d/nodejs.sh
   echo "export OCI_INC_DIR=\"\$HOME/vendor/oracle_instantclient/sdk/include\"" >> $1/.profile.d/nodejs.sh
 
