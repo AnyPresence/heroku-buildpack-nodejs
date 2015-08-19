@@ -84,12 +84,6 @@ install_bins() {
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
   fi
   warn_old_npm
-
-  ####### Install binary dependencies
-
-  echo "Installing AnyPresence binary dependencies"
-  cd $BUILD_DIR
-  install_ap_binary_dependencies $BUILD_DIR $BP_DIR
 }
 
 header "Installing binaries"
@@ -116,6 +110,10 @@ header "Restoring cache"
 restore_cache | indent
 
 build_dependencies() {
+  ####### Install binary dependencies
+  echo "Installing AnyPresence binary dependencies"
+  install_ap_binary_dependencies $BUILD_DIR $BP_DIR
+
   if $PREBUILD; then
     echo "Prebuild detected (node_modules already exists)"
     rebuild_node_modules "$BUILD_DIR"
