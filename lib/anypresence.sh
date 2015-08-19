@@ -31,7 +31,7 @@ install_oci8() {
 
   export OCI_INC_DIR=$oci_inc
   export OCI_LIB_DIR=$oracle_instant_client_dir
-  export LD_LIBRARY_PATH=$oracle_instant_client_dir:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+LD_LIBRARY_PATH:}$oracle_instant_client_dir
 
   info "Done installing OCI8."
 }
