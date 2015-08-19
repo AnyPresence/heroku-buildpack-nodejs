@@ -20,9 +20,8 @@ install_oci8() {
   curl $oracle_instant_client_tgz -s -o - | tar xzf - -C $oracle_instant_client_dir
 
   local oci_inc="${oracle_instant_client_dir}/sdk/include"
-  local profile_dir = "${1}/profile"
-  mkdir -p "${profile_dir}"
-  local profile_file = "${profile_dir}/oci.sh"
+  mkdir -p "${1}/profile"
+  local profile_file = "${1}/profile/oci.sh"
   echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/oracle_instantclient:\$LD_LIBRARY_PATH\"" > $profile_file
   echo "export OCI_LIB_DIR=\"\$HOME/vendor/oracle_instantclient\"" >> $profile_file
   echo "export OCI_INC_DIR=\"\$HOME/vendor/oracle_instantclient/sdk/include\"" >> $profile_file
