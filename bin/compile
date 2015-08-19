@@ -87,7 +87,7 @@ install_bins() {
 
   ####### Install binary dependencies
 
-  header "Installing AnyPresence binary dependencies"
+  echo "Installing AnyPresence binary dependencies"
   install_ap_binary_dependencies $BUILD_DIR $BP_DIR
 }
 
